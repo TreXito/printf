@@ -6,7 +6,7 @@
 /*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:36:46 by ppodobri          #+#    #+#             */
-/*   Updated: 2026/11/06 15:38:06 by ppodobri         ###   ########.fr       */
+/*   Updated: 2026/11/06 17:46:40 by ppodobri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ int	ft_printf(const char *input, ...)
 	va_end(args);
 }
 
-char *modString(char *conversions)
+char *modString(char *input_mod)
 {
 	char *print;
 
-	if (conversions[0])
+	if (input_mod[1] == 'c')
+		return(ft_printc(*input));
 	
 }
 
