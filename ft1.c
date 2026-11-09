@@ -1,30 +1,55 @@
 #include "printf.h"
 
-void ft_printc(char * input)
+void * ft_printc(void *input)
 {
-	char *print;
+	char *c;
 
-	print = (input);
+	c = (char *)input;
+	write(1, *c, 1);
 }
 
-void ft_prints(char *input)
+void * ft_prints(void *input)
+{
+	char	*s;
+	int		i;
+
+	i = 0;
+	s = (char *)input;
+	while (*s)
+		i++;
+	write(1, &s, i);
+}
+
+void *ft_printp(void *input)
 {
 
 }
 
-void ft_printp(char *input)
+void *ft_printd(void *input)
 {
+	char	c;
+	int		n;
 
+	n = (int)input;
+	if (n < 0)
+	{
+		write (1, "-", 1);
+		if (n == -2147483648)
+		{
+			write(1, "2147483648", 11);
+			return ;
+		}
+		n = -n;
+	}
+	if (n > 9)
+		ft_printd(n / 10);
+	c = n % 10 + '0';
+	write(1, &c, 1);
 }
 
-void ft_printd(char *input)
+void *ft_printi(void *input)
 {
-
-}
-
-void ft_printi(char *input)
-{
-	
+	ft_printd(input);
 }
 
 • %c Prints a single character.
@@ -32,7 +57,3 @@ void ft_printi(char *input)
 • %p The void * pointer argument has to be printed in hexadecimal format.
 • %d Prints a decimal (base 10) number.
 • %i Prints an integer in base 10.
-• %u Prints an unsigned decimal (base 10) number.
-• %x Prints a number in hexadecimal (base 16) lowercase format.
-• %X Prints a number in hexadecimal (base 16) uppercase format.
-• %% Prints a percent sign.
