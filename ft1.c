@@ -22,7 +22,15 @@ void * ft_prints(void *input)
 
 void *ft_printp(void *input)
 {
+	char	*hexTable;
+	char	c;
+	int		n;
 
+	hexTable = "123456789abcdef";
+	n = (unsigned int)input;
+	if (n > 15)
+		ft_printx(n / 16);
+	write(1, hexTable[n % 16], 1);
 }
 
 void *ft_printd(void *input)

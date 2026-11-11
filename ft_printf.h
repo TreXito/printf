@@ -6,7 +6,7 @@
 /*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 09:45:40 by ppodobri          #+#    #+#             */
-/*   Updated: 2026/11/09 18:27:48 by ppodobri         ###   ########.fr       */
+/*   Updated: 2026/11/11 13:38:06 by ppodobri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #include <stdio.h>
 #include <stdarg.h>
-#include "libft/libft.h"
 
 int	ft_printf(const char *, ...);
 void ft_printc(char * input);

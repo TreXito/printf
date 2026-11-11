@@ -2,17 +2,40 @@
 
 void *ft_printu(void *input)
 {
+	char				c;
+	unsigned int		n;
 
+	n = (unsigned int)input;
+	if (n > 9)
+		ft_printd(n / 10);
+	c = n % 10 + '0';
+	write(1, &c, 1);
 }
 
 void *ft_printx(void *input)
 {
+	char	*hexTable;
+	char	c;
+	int		n;
 
+	hexTable = "123456789abcdef";
+	n = (unsigned int)input;
+	if (n > 15)
+		ft_printx(n / 16);
+	write(1, hexTable[n % 16], 1);
 }
 
 void *ft_printX(void *input)
 {
+	char	*hexTable;
+	char	c;
+	int		n;
 
+	hexTable = "123456789abcdef";
+	n = (unsigned int)input;
+	if (n > 15)
+		ft_printx(n / 16);
+	write(1, hexTable[n % 16], 1);
 }
 
 void *ft_printPERC(void *input)
