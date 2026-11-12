@@ -5,5 +5,5 @@ int main(void)
 	char c;
 
 	c = 'a';
-	printf("%p", &c);
+	printf("hello world%d blabla", 341);
 }
