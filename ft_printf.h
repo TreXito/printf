@@ -6,7 +6,7 @@
 /*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 09:45:40 by ppodobri          #+#    #+#             */
-/*   Updated: 2026/11/12 00:56:20 by ppodobri         ###   ########.fr       */
+/*   Updated: 2026/11/12 17:46:16 by ppodobri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 static void *ft_printc(void *input);
 static void *ft_prints(void *input);

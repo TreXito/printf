@@ -5,5 +5,5 @@ int main(void)
 	char c;
 
 	c = 'a';
-	printf("hello world%d blabla", 341);
+	printf("i am %s and trexito", "fat");
 }

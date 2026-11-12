@@ -6,7 +6,7 @@
 /*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:36:46 by ppodobri          #+#    #+#             */
-/*   Updated: 2026/11/12 01:27:58 by ppodobri         ###   ########.fr       */
+/*   Updated: 2026/11/12 22:14:53 by ppodobri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,30 @@ int	ft_printf(const char *input, ...)
 	va_list args;
 	int i;
 	char *input_mod;
-	
-	i = 0;
-	input_mod = conversion(input);
+	char *conversions;
+	input_mod = malloc(2);
+	conversions = "cspdiuxX%";
 	va_start(args, input);
 	
-	
+	i = 0;
+	while (*input)
+	{ 
+		while (conversions[i]){ 
+			if (*input == "%" && *(input + 1) == conversions[i])
+				return(modString(*(input + 1), input, args));
+				
+			else
+			{
+				write (1, *input, 1);
+				input++;
+			}
+		
+	}
 	va_end(args);
-}// ft_printf("%d", hello, world) <--- hello = va_list element 1 , world e2
 //ft_printf("i am %s and trexito", fat) would print i am fat and trexito
+}
 
-char *modString(char *input_mod, const char *input, va_list args)
+char *modString(char input_mod, const char *input, va_list args)
 {
 	if (input_mod[1] == 'c')
 		ft_printc(input);
@@ -55,6 +68,7 @@ char *conversion(char *input)
 	int i;
 	char *input_mod;
 
+	input_mod = malloc(2);
 	conversions = "cspdiuxX%";
 	i = 0;
 	while (*input)

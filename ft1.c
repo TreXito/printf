@@ -1,4 +1,4 @@
-#include "printf.h"
+#include "ft_printf.h"
 
 static void *ft_printc(void *input)
 {
