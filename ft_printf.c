@@ -6,7 +6,7 @@
 /*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:36:46 by ppodobri          #+#    #+#             */
-/*   Updated: 2026/11/12 22:14:53 by ppodobri         ###   ########.fr       */
+/*   Updated: 2026/11/13 20:41:20 by ppodobri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,53 +16,49 @@ int	ft_printf(const char *input, ...)
 {
 	va_list args;
 	int i;
-	char *input_mod;
 	char *conversions;
-	input_mod = malloc(2);
-	conversions = "cspdiuxX%";
-	va_start(args, input);
 	
 	i = 0;
+	conversions = "cspdiuxX%";
+	va_start(args, input);
 	while (*input)
 	{ 
-		while (conversions[i]){ 
+		while (conversions[i])
+		{ 
 			if (*input == "%" && *(input + 1) == conversions[i])
 				return(modString(*(input + 1), input, args));
-				
 			else
-			{
-				write (1, *input, 1);
-				input++;
-			}
-		
-	}
+				i++;
+		}	
+	write (1, *input, 1);
+	input++;
+	}		
 	va_end(args);
-//ft_printf("i am %s and trexito", fat) would print i am fat and trexito
 }
 
 char *modString(char input_mod, const char *input, va_list args)
 {
-	if (input_mod[1] == 'c')
+	if (input_mod == 'c')
 		ft_printc(input);
-	else if (input_mod[1] == 's')
+	else if (input_mod == 's')
 		ft_prints(input);
-	else if (input_mod[1] == 'p')
+	else if (input_mod == 'p')
 		ft_printp(input);
-	else if  (input_mod[1] == 'd')
+	else if  (input_mod == 'd')
 		ft_printd(input);
-	else if  (input_mod[1] == 'i')
+	else if  (input_mod == 'i')
 		ft_printi(input);
-	else if  (input_mod[1] == 'u')
+	else if  (input_mod == 'u')
 		ft_printu(input);
-	else if  (input_mod[1] == 'x')
+	else if  (input_mod == 'x')
 		ft_printx(input);
-	else if  (input_mod[1] == 'X')
+	else if  (input_mod == 'X')
 		ft_printX(input);
-	else if  (input_mod[1] == '%')
+	else if  (input_mod == '%')
 		ft_printPERC(input);
 }
 
-char *conversion(char *input)
+/*char *conversion(char *input)
 {
 	char *conversions;
 	int i;
@@ -77,7 +73,7 @@ char *conversion(char *input)
 			if (*input == "%" && *input == conversions[i])
 			{
 				input_mod[0] = "%";
-				 input_mod[1] =  conversions[i];
+				 input_mod =  conversions[i];
 			}
 				else if (input == "%")
 				i++;
@@ -86,7 +82,7 @@ char *conversion(char *input)
 		}
 	}
 	return (input_mod);
-}
+}*/
 
 int main(void)
 {
