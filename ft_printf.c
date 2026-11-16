@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+char *modString(char input_mod, const char *input, va_list args);
 
 int	ft_printf(const char *input, ...)
 {
 	va_list args;
 	int i;
 	char *conversions;
-	
+
 	i = 0;
 	conversions = "cspdiuxX%";
 	va_start(args, input);
@@ -25,8 +26,8 @@ int	ft_printf(const char *input, ...)
 	{ 
 		while (conversions[i])
 		{ 
-			if (*input == "%" && *(input + 1) == conversions[i])
-				return(modString(*(input + 1), input, args));
+			if (*input == '%' && *(input + 1) == conversions[i])
+				return(modString(*(input + 1), inputc, args));
 			else
 				i++;
 		}	
@@ -56,7 +57,7 @@ char *modString(char input_mod, const char *input, va_list args)
 		ft_printX(input);
 	else if  (input_mod == '%')
 		ft_printPERC(input);
-}
+}// return length of new string
 
 /*char *conversion(char *input)
 {

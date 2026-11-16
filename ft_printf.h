@@ -17,13 +17,13 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-static void *ft_printc(void *input);
-static void *ft_prints(void *input);
-static void *ft_printp(void *input);
-static void *ft_printd(void *input);
-static void *ft_printi(void *input);
-static void *ft_printu(void *input);
-static void *ft_printx(void *input);
-static void *ft_printX(void *input);
-static void	*ft_printPERC(void *input);
+static void *ft_printc(char *input);
+static void *ft_prints(char *input);
+static void *ft_printp(char *input);
+static void *ft_printd(char *input);
+static void *ft_printi(char *input);
+static void *ft_printu(char *input);
+static void *ft_printx(char *input);
+static void *ft_printX(char *input);
+static void	*ft_printPERC(char *input);
 
