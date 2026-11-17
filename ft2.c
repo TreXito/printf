@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static void *ft_printu(char *input)
+int ft_printu(unsigned int n)
 {
 	char				c;
 	unsigned int		n;
@@ -12,7 +12,7 @@ static void *ft_printu(char *input)
 	write(1, &c, 1);
 }
 
-static void *ft_printx(char *input)
+int ft_printx(unsigned int n)
 {
 	char	*hexTable;
 	char	c;
@@ -25,7 +25,7 @@ static void *ft_printx(char *input)
 	write(1, hexTable[n % 16], 1);
 }
 
-static void *ft_printX(char *input)
+int ft_printX(unsigned int n)
 {
 	char				*hexTable;
 	char				c;
@@ -38,12 +38,12 @@ static void *ft_printX(char *input)
 	write(1, hexTable[n % 16], 1);
 }
 
-static void *ft_printPERC(char *input)
+int ft_printPERC(void)
 {
 	write(1, '%', 1);
 }
 
-• %u Prints an unsigned decimal (base 10) number.
+/*• %u Prints an unsigned decimal (base 10) number.
 • %x Prints a number in hexadecimal (base 16) lowercase format.
 • %X Prints a number in hexadecimal (base 16) uppercase format.
-• %% Prints a percent sign.
+• %% Prints a percent sign. */

@@ -1,26 +1,26 @@
 #include "ft_printf.h"
 
-static void *ft_printc(char *input)
+int ft_printc(int c)
 {
-	char *c;
+	const char *ch;
 
-	c = (char *)input;
-	write(1, *c, 1);
+	ch = c;
+	write(1, &ch, 1);
 }
 
-static void *ft_prints(char *input)
+int ft_prints(char *s)
 {
-	char	*s;
+	char	*str;
 	int		i;
 
 	i = 0;
-	s = (char *)input;
-	while (*s)
+	str = (char *)s;
+	while (*str)
 		i++;
-	write(1, &s, i);
+	write(1, &str, i);
 }
 
-static void *ft_printp(char *input)
+int ft_printp(void *p)
 {
 	char	*hexTable;
 	char	c;
@@ -33,7 +33,7 @@ static void *ft_printp(char *input)
 	write(1, hexTable[n % 16], 1);
 }
 
-static void *ft_printd(char *input)
+int ft_printd(int n)
 {
 	char	c;
 	int		n;
@@ -55,13 +55,14 @@ static void *ft_printd(char *input)
 	write(1, &c, 1);
 }
 
-static void *ft_printi(char *input)
+int ft_printi(int n)
 {
 	ft_printd(input);
 }
 
-• %c Prints a single character.
+/*• %c Prints a single character.
 • %s Prints a string (as defined by the common C convention).
 • %p The void * pointer argument has to be printed in hexadecimal format.
 • %d Prints a decimal (base 10) number.
 • %i Prints an integer in base 10.
+*/
