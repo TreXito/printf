@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-int modString(char input_mod, const char *input, va_list args);
+int modString(char input_mod, const char *input, va_list *args);
 
 int	ft_printf(const char *input, ...)
 {
@@ -29,7 +29,7 @@ int	ft_printf(const char *input, ...)
 		while (conversions[i])
 		{ 
 			if (input[j] == '%' && input[j + 1] == conversions[i])
-				j += modString(input[j + 1], input, args);
+				j += modString(input[j + 1], input, *args);
 			else
 				i++;
 		}	
@@ -37,21 +37,19 @@ int	ft_printf(const char *input, ...)
 	j++;
 	}		
 	va_end(args);
+	return (j);
 }
 
-int modString(char input_mod, const char *input, va_list args)
+int modString(char input_mod, const char *input, va_list *args)
 {
-	char *inchar;
-
-	inchar = (char *)input;
 	if (input_mod == 'c')
-		ft_printc(inchar);
+		return(ft_printc(va_arg(*args, int)));
 	else if (input_mod == 's')
-		ft_prints(inchar);
+		return(ft_prints(va_arg(*args, char *)));
 	else if (input_mod == 'p')
-		ft_printp(inchar);
+		return(ft_printp(va_arg(*args, void *)));
 	else if  (input_mod == 'd')
-		ft_printd(inchar);
+		return(ft_printd(va_arg(*args, int)));
 	else if  (input_mod == 'i')
 		ft_printi(inchar);
 	else if  (input_mod == 'u')
