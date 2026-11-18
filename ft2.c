@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int ft_printu(unsigned int n)
+int ft_printu(unsigned int n, int count)
 {
 	char				c;
 	unsigned int		n;
@@ -12,7 +12,7 @@ int ft_printu(unsigned int n)
 	write(1, &c, 1);
 }
 
-int ft_printx(unsigned int n)
+int ft_printx(unsigned int n, int count)
 {
 	char	*hexTable;
 	char	c;
@@ -25,7 +25,7 @@ int ft_printx(unsigned int n)
 	write(1, hexTable[n % 16], 1);
 }
 
-int ft_printX(unsigned int n)
+int ft_printX(unsigned int n, int count)
 {
 	char				*hexTable;
 	char				c;
@@ -41,6 +41,7 @@ int ft_printX(unsigned int n)
 int ft_printPERC(void)
 {
 	write(1, '%', 1);
+	return (1);
 }
 
 /*• %u Prints an unsigned decimal (base 10) number.

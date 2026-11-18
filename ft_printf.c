@@ -6,7 +6,7 @@
 /*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:36:46 by ppodobri          #+#    #+#             */
-/*   Updated: 2026/11/17 18:52:32 by ppodobri         ###   ########.fr       */
+/*   Updated: 2026/11/18 17:29:04 by ppodobri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_printf(const char *input, ...)
 		while (conversions[i])
 		{ 
 			if (input[j] == '%' && input[j + 1] == conversions[i])
-				j += modString(input[j + 1], input, *args);
+				j += modString(input[j + 1], input, &args, j);
 			else
 				i++;
 		}	
@@ -40,26 +40,26 @@ int	ft_printf(const char *input, ...)
 	return (j);
 }
 
-int modString(char input_mod, const char *input, va_list *args)
+int modString(char input_mod, const char *input, va_list *args, int counter)
 {
 	if (input_mod == 'c')
-		return(ft_printc(va_arg(*args, int)));
+		counter += ft_printc(va_arg(*args, int));
 	else if (input_mod == 's')
-		return(ft_prints(va_arg(*args, char *)));
+		counter += ft_prints(va_arg(*args, char *));
 	else if (input_mod == 'p')
 		return(ft_printp(va_arg(*args, void *)));
 	else if  (input_mod == 'd')
 		return(ft_printd(va_arg(*args, int)));
 	else if  (input_mod == 'i')
-		ft_printi(inchar);
+		return(ft_printi(va_arg(*args, int)));
 	else if  (input_mod == 'u')
-		ft_printu(inchar);
+		return(ft_printu(va_arg(*args, unsigned int)));
 	else if  (input_mod == 'x')
-		ft_printx(inchar);
+		return(ft_printx(va_arg(*args, unsigned int)));
 	else if  (input_mod == 'X')
-		ft_printX(inchar);
+		return(ft_printX(va_arg(*args, unsigned int)));
 	else if  (input_mod == '%')
-		ft_printPERC(inchar);
+		return(ft_printPERC(va_arg(*args, void));
 }// return length of new string
 
 /*char *conversion(char *input)

@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int ft_printc(int c)
+int ft_printc(int c, int count)
 {
 	const char *ch;
 
@@ -8,7 +8,7 @@ int ft_printc(int c)
 	write(1, &ch, 1);
 }
 
-int ft_prints(char *s)
+int ft_prints(char *s, int count)
 {
 	char	*str;
 	int		i;
@@ -20,7 +20,7 @@ int ft_prints(char *s)
 	write(1, &str, i);
 }
 
-int ft_printp(void *p)
+int ft_printp(void *p, int count)
 {
 	char	*hexTable;
 	char	c;
@@ -33,7 +33,7 @@ int ft_printp(void *p)
 	write(1, hexTable[n % 16], 1);
 }
 
-int ft_printd(int n)
+int ft_printd(int n, int count)
 {
 	char	c;
 	int		n;
@@ -55,7 +55,7 @@ int ft_printd(int n)
 	write(1, &c, 1);
 }
 
-int ft_printi(int n)
+int ft_printi(int n, int count)
 {
 	ft_printd(input);
 }
