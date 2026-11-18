@@ -3,39 +3,38 @@
 int ft_printu(unsigned int n, int count)
 {
 	char				c;
-	unsigned int		n;
 
-	n = (unsigned int)input;
 	if (n > 9)
-		ft_printd(n / 10);
+		ft_printd(n / 10, count);
 	c = n % 10 + '0';
 	write(1, &c, 1);
+	if (n < 10)
+		return (count);
 }
 
 int ft_printx(unsigned int n, int count)
 {
 	char	*hexTable;
-	char	c;
-	int		n;
 
+	//write 00x (i think) before?
 	hexTable = "0123456789abcdef";
-	n = (unsigned int)input;
 	if (n > 15)
-		ft_printx(n / 16);
+		ft_printx(n / 16, count);
 	write(1, hexTable[n % 16], 1);
+	if (n < 16 )
+		return (count);
 }
 
 int ft_printX(unsigned int n, int count)
 {
 	char				*hexTable;
-	char				c;
-	unsigned int		n;
 
 	hexTable = "0123456789abcdef";
-	n = (unsigned int)input;
 	if (n > 15)
-		ft_printx(n / 16);
+		ft_printx(n / 16, count);
 	write(1, hexTable[n % 16], 1);
+	if (n < 16 )
+		return (count);
 }
 
 int ft_printPERC(void)

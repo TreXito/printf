@@ -6,12 +6,13 @@
 /*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:36:46 by ppodobri          #+#    #+#             */
-/*   Updated: 2026/11/18 17:29:04 by ppodobri         ###   ########.fr       */
+/*   Updated: 2026/11/18 20:29:00 by ppodobri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-int modString(char input_mod, const char *input, va_list *args);
+
+int modString(char input_mod, const char *input, va_list *args, int counter);
 
 int	ft_printf(const char *input, ...)
 {
@@ -43,23 +44,21 @@ int	ft_printf(const char *input, ...)
 int modString(char input_mod, const char *input, va_list *args, int counter)
 {
 	if (input_mod == 'c')
-		counter += ft_printc(va_arg(*args, int));
+		counter = ft_printc(va_arg(*args, int), counter);
 	else if (input_mod == 's')
-		counter += ft_prints(va_arg(*args, char *));
+		counter = ft_prints(va_arg(*args, char *), counter);
 	else if (input_mod == 'p')
-		return(ft_printp(va_arg(*args, void *)));
-	else if  (input_mod == 'd')
-		return(ft_printd(va_arg(*args, int)));
-	else if  (input_mod == 'i')
-		return(ft_printi(va_arg(*args, int)));
+		counter = ft_printp(va_arg(*args, void *), counter);
+	else if  (input_mod == 'd' || input_mod == 'i')
+		counter = ft_printd(va_arg(*args, int), counter);
 	else if  (input_mod == 'u')
-		return(ft_printu(va_arg(*args, unsigned int)));
+		counter = ft_printu(va_arg(*args, unsigned int), counter);
 	else if  (input_mod == 'x')
-		return(ft_printx(va_arg(*args, unsigned int)));
+		counter = ft_printx(va_arg(*args, unsigned int), counter);
 	else if  (input_mod == 'X')
-		return(ft_printX(va_arg(*args, unsigned int)));
+		counter = ft_printX(va_arg(*args, unsigned int), counter);
 	else if  (input_mod == '%')
-		return(ft_printPERC(va_arg(*args, void));
+		counter = ft_printPERC(counter);
 }// return length of new string
 
 /*char *conversion(char *input)
