@@ -6,7 +6,7 @@
 /*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:36:46 by ppodobri          #+#    #+#             */
-/*   Updated: 2026/11/18 20:29:00 by ppodobri         ###   ########.fr       */
+/*   Updated: 2026/11/18 20:40:35 by ppodobri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int modString(char input_mod, const char *input, va_list *args, int counter)
 		counter = ft_printX(va_arg(*args, unsigned int), counter);
 	else if  (input_mod == '%')
 		counter = ft_printPERC(counter);
+	return counter;
 }// return length of new string
 
 /*char *conversion(char *input)
