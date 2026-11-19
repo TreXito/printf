@@ -2,9 +2,9 @@
 
 int ft_printc(int c, int count)
 {
-	const char *ch;
+	char ch;
 
-	ch = c;
+	ch = (char)c;
 	write(1, &ch, 1);
 	return (count++);
 }
@@ -25,17 +25,18 @@ int ft_prints(char *s, int count)
 
 int ft_printp(void *p, int count)
 {
-	char	*hexTable;
-	int		n;
+	char				*hexTable;
+	unsigned long		n;
 
 	hexTable = "0123456789abcdef";
-	n = (unsigned int)p;
+	n = (unsigned long)p;
 	if (n > 15)
+	{
+		count++;
 		ft_printx(n / 16, count);
-	write(1, hexTable[n % 16], 1);
-	count++;
-	if (n < 15)
-		return (count);
+	}
+	write(1, &hexTable[n % 16], 1);
+	return (count);
 }
 
 int ft_printd(int n, int count)
@@ -44,22 +45,24 @@ int ft_printd(int n, int count)
 
 	if (n < 0)
 	{
+		count += 1;
 		write (1, "-", 1);
 		if (n == -2147483648)
 		{
 			write(1, "2147483648", 11);
-			return ;
-			count++;
+			count += 10;
+			return (count);
 		}
 		n = -n;
 	}
 	if (n > 9)
+	{
+		count++;
 		ft_printd(n / 10, count);
+	}
 	c = n % 10 + '0';
-	count++;
 	write(1, &c, 1);
-	if (n < 10)
-		return (count);
+	return (count);
 }
 
 /*• %c Prints a single character.

@@ -5,11 +5,13 @@ int ft_printu(unsigned int n, int count)
 	char				c;
 
 	if (n > 9)
+	{
+		count++;
 		ft_printd(n / 10, count);
+	}
 	c = n % 10 + '0';
 	write(1, &c, 1);
-	if (n < 10)
-		return (count);
+	return (count);
 }
 
 int ft_printx(unsigned int n, int count)
@@ -19,10 +21,12 @@ int ft_printx(unsigned int n, int count)
 	//write 00x (i think) before?
 	hexTable = "0123456789abcdef";
 	if (n > 15)
+	{
+		count++;
 		ft_printx(n / 16, count);
-	write(1, hexTable[n % 16], 1);
-	if (n < 16 )
-		return (count);
+	}
+	write(1, &hexTable[n % 16], 1);
+	return (count);
 }
 
 int ft_printX(unsigned int n, int count)
@@ -31,16 +35,18 @@ int ft_printX(unsigned int n, int count)
 
 	hexTable = "0123456789abcdef";
 	if (n > 15)
+	{
+		count++;
 		ft_printx(n / 16, count);
-	write(1, hexTable[n % 16], 1);
-	if (n < 16 )
-		return (count);
+	}
+	write(1, &hexTable[n % 16], 1);
+	return (count);
 }
 
-int ft_printPERC(void)
+int ft_printPERC(int count)
 {
-	write(1, '%', 1);
-	return (1);
+	write(1, "%", 1);
+	return (count + 1);
 }
 
 /*• %u Prints an unsigned decimal (base 10) number.

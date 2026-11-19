@@ -6,42 +6,42 @@
 /*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:36:46 by ppodobri          #+#    #+#             */
-/*   Updated: 2026/11/18 20:40:35 by ppodobri         ###   ########.fr       */
+/*   Updated: 2026/11/19 20:40:05 by ppodobri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int modString(char input_mod, const char *input, va_list *args, int counter);
+int modString(char input_mod, va_list *args, int counter);
 
 int	ft_printf(const char *input, ...)
 {
 	va_list args;
 	int		i;
-	int		j;
-	char	*conversions;
+	int		counter;
 
 	i = 0;
-	j = 0;
-	conversions = "cspdiuxX%";
+	counter = 0;
 	va_start(args, input);
-	while (input[j])
+	while (input[i])
 	{ 
-		while (conversions[i])
-		{ 
-			if (input[j] == '%' && input[j + 1] == conversions[i])
-				j += modString(input[j + 1], input, &args, j);
-			else
-				i++;
-		}	
-	write (1, &input[j], 1);
-	j++;
+		if (input[i] == '%' && input[i + 1] != '\0')
+		{
+			counter += modString(input[i + 1], &args, i);
+			i += 2;
+		}
+		else
+		{
+			write (1, &input[i], 1);
+			i++;
+			counter++;
+		}
 	}		
 	va_end(args);
-	return (j);
+	return (counter);
 }
 
-int modString(char input_mod, const char *input, va_list *args, int counter)
+int modString(char input_mod, va_list *args, int counter)
 {
 	if (input_mod == 'c')
 		counter = ft_printc(va_arg(*args, int), counter);
@@ -59,7 +59,13 @@ int modString(char input_mod, const char *input, va_list *args, int counter)
 		counter = ft_printX(va_arg(*args, unsigned int), counter);
 	else if  (input_mod == '%')
 		counter = ft_printPERC(counter);
-	return counter;
+	else
+	{
+		write(1, "%", 1);
+		write(1, &input_mod, 1);
+		counter += 2;
+	}
+	return (counter);
 }// return length of new string
 
 /*char *conversion(char *input)
@@ -88,7 +94,7 @@ int modString(char input_mod, const char *input, va_list *args, int counter)
 	return (input_mod);
 }*/
 
-int main(void)
+/*int main(void)
 {
 	printf("hello world%d blabla", 341);
-}
+}*/
