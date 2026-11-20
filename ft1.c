@@ -38,8 +38,8 @@ int ft_printp(void *p, int count)
 
 	if (p == NULL)
 	{
-		write (1, "(null)", 6);
-		return (count + 6);
+		write (1, "(nil)", 5);
+		return (count + 5);
 	}
 	else
 	{
@@ -49,6 +49,7 @@ int ft_printp(void *p, int count)
 	if (n > 15)
 		count = ft_printxlow(n / 16, count);
 	write(1, &hexTable[n % 16], 1);
+	count++;
 	return (count);
 }
 
@@ -62,7 +63,7 @@ int ft_printd(int n, int count)
 		write (1, "-", 1);
 		if (n == -2147483648)
 		{
-			write(1, "2147483648", 11);
+			write(1, "2147483648", 10);
 			count += 10;
 			return (count);
 		}
@@ -72,6 +73,7 @@ int ft_printd(int n, int count)
 		count = ft_printd(n / 10, count);
 	c = n % 10 + '0';
 	write(1, &c, 1);
+	count++;
 	return (count);
 }
 

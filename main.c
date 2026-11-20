@@ -17,8 +17,8 @@ int main(void)
 	printf("%d %d\n", a, b);
 	ft_printf("\n");
 
-	printf("%p\n", &p);
-	ft_printf("%p\n", &p);
+	printf(" %p %p ", 0, 0);
+	ft_printf(" %p %p ", 0, 0);
 
 	ft_printf("\n");
 

@@ -6,7 +6,7 @@
 /*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:36:46 by ppodobri          #+#    #+#             */
-/*   Updated: 2026/11/20 22:11:12 by ppodobri         ###   ########.fr       */
+/*   Updated: 2026/11/20 23:46:22 by ppodobri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	ft_printf(const char *input, ...)
 	counter = 0;
 	va_start(args, input);
 	while (input[i])
-	{ 
+	{
 		if (input[i] == '%' && input[i + 1] != '\0')
 		{
-			counter = modString(input[i + 1], &args, i);
+			counter = modString(input[i + 1], &args, counter);
 			i += 2;
 		}
 		else
