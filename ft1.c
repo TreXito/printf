@@ -11,15 +11,20 @@ int ft_printc(int c, int count)
 
 int ft_prints(char *s, int count)
 {
-	char	*str;
 	int		i;
 
 	i = 0;
-	str = (char *)s;
-	while (*str)
+	if (s == NULL)
+	{
+		write (1, "(null)", 6);
+		return (count + 6);
+	}
+	while (s[i])
+	{
+		write(1, &s[i], 1);
 		i++;
-	write(1, &str, i);
-	count =+ i;
+	}
+	count += i;
 	return (count);
 }
 
@@ -30,10 +35,20 @@ int ft_printp(void *p, int count)
 
 	hexTable = "0123456789abcdef";
 	n = (unsigned long)p;
+
+	if (p == NULL)
+	{
+		write (1, "(null)", 6);
+		return (count + 6);
+	}
+	else
+	{
+		write (1, "0x", 2);
+		count += 2;
+	}
 	if (n > 15)
 	{
-		count++;
-		ft_printx(n / 16, count);
+		ft_printxlow(n / 16, count);
 	}
 	write(1, &hexTable[n % 16], 1);
 	return (count);
@@ -45,7 +60,7 @@ int ft_printd(int n, int count)
 
 	if (n < 0)
 	{
-		count += 1;
+		count ++;
 		write (1, "-", 1);
 		if (n == -2147483648)
 		{
@@ -57,7 +72,6 @@ int ft_printd(int n, int count)
 	}
 	if (n > 9)
 	{
-		count++;
 		ft_printd(n / 10, count);
 	}
 	c = n % 10 + '0';

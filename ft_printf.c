@@ -6,7 +6,7 @@
 /*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 15:36:46 by ppodobri          #+#    #+#             */
-/*   Updated: 2026/11/19 20:40:05 by ppodobri         ###   ########.fr       */
+/*   Updated: 2026/11/20 22:11:12 by ppodobri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_printf(const char *input, ...)
 	{ 
 		if (input[i] == '%' && input[i + 1] != '\0')
 		{
-			counter += modString(input[i + 1], &args, i);
+			counter = modString(input[i + 1], &args, i);
 			i += 2;
 		}
 		else
@@ -54,9 +54,9 @@ int modString(char input_mod, va_list *args, int counter)
 	else if  (input_mod == 'u')
 		counter = ft_printu(va_arg(*args, unsigned int), counter);
 	else if  (input_mod == 'x')
-		counter = ft_printx(va_arg(*args, unsigned int), counter);
+		counter = ft_printxlow(va_arg(*args, unsigned int), counter);
 	else if  (input_mod == 'X')
-		counter = ft_printX(va_arg(*args, unsigned int), counter);
+		counter = ft_printxup(va_arg(*args, unsigned int), counter);
 	else if  (input_mod == '%')
 		counter = ft_printPERC(counter);
 	else

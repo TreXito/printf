@@ -6,40 +6,41 @@ int ft_printu(unsigned int n, int count)
 
 	if (n > 9)
 	{
-		count++;
 		ft_printd(n / 10, count);
 	}
 	c = n % 10 + '0';
 	write(1, &c, 1);
+	count++;
 	return (count);
 }
 
-int ft_printx(unsigned int n, int count)
+int ft_printxlow(unsigned long n, int count)
 {
 	char	*hexTable;
 
-	//write 00x (i think) before?
 	hexTable = "0123456789abcdef";
 	if (n > 15)
 	{
 		count++;
-		ft_printx(n / 16, count);
+		ft_printxlow(n / 16, count);
 	}
 	write(1, &hexTable[n % 16], 1);
+	count++;
 	return (count);
 }
 
-int ft_printX(unsigned int n, int count)
+int ft_printxup(unsigned long n, int count)
 {
 	char				*hexTable;
 
-	hexTable = "0123456789abcdef";
+	hexTable = "0123456789ABCDEF";
 	if (n > 15)
 	{
 		count++;
-		ft_printx(n / 16, count);
+		ft_printxup(n / 16, count);
 	}
 	write(1, &hexTable[n % 16], 1);
+	count++;
 	return (count);
 }
 
