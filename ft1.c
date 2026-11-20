@@ -2,11 +2,11 @@
 
 int ft_printc(int c, int count)
 {
-	char ch;
+	unsigned char	ch;
 
-	ch = (char)c;
+	ch = (unsigned char)c;
 	write(1, &ch, 1);
-	return (count++);
+	return (++count);
 }
 
 int ft_prints(char *s, int count)
@@ -47,9 +47,7 @@ int ft_printp(void *p, int count)
 		count += 2;
 	}
 	if (n > 15)
-	{
-		ft_printxlow(n / 16, count);
-	}
+		count = ft_printxlow(n / 16, count);
 	write(1, &hexTable[n % 16], 1);
 	return (count);
 }
@@ -60,7 +58,7 @@ int ft_printd(int n, int count)
 
 	if (n < 0)
 	{
-		count ++;
+		count++;
 		write (1, "-", 1);
 		if (n == -2147483648)
 		{
@@ -71,9 +69,7 @@ int ft_printd(int n, int count)
 		n = -n;
 	}
 	if (n > 9)
-	{
-		ft_printd(n / 10, count);
-	}
+		count = ft_printd(n / 10, count);
 	c = n % 10 + '0';
 	write(1, &c, 1);
 	return (count);
