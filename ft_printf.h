@@ -24,4 +24,3 @@ int	ft_printu(unsigned int n, int counter);
 int	ft_printxlow(unsigned long n, int counter);
 int	ft_printxup(unsigned long n, int counter);
 int	ft_printperc(int counter);
-int	modstring(char input_mod, va_list *args, int counter);

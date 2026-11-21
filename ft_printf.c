@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	modstring(char input_mod, va_list *args, int counter);
+static int	modstring(char input_mod, va_list *args, int counter);
 
 int	ft_printf(const char *input, ...)
 {
@@ -41,7 +41,7 @@ int	ft_printf(const char *input, ...)
 	return (counter);
 }
 
-int	modstring(char input_mod, va_list *args, int counter)
+static int	modstring(char input_mod, va_list *args, int counter)
 {
 	if (input_mod == 'c')
 		counter = ft_printc(va_arg(*args, int), counter);
