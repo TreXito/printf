@@ -1,44 +1,56 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft2.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/21 16:16:35 by ppodobri          #+#    #+#             */
+/*   Updated: 2026/11/21 16:19:58 by ppodobri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int ft_printu(unsigned int n, int count)
+int	ft_printu(unsigned int n, int count)
 {
 	char				c;
 
 	if (n > 9)
 		count = ft_printd(n / 10, count);
 	c = n % 10 + '0';
-	write(1, &c, 1);
+	write (1, &c, 1);
 	count++;
 	return (count);
 }
 
-int ft_printxlow(unsigned long n, int count)
+int	ft_printxlow(unsigned long n, int count)
 {
-	char	*hexTable;
+	char	*hextable;
 
-	hexTable = "0123456789abcdef";
+	hextable = "0123456789abcdef";
 	if (n > 15)
 		count = ft_printxlow(n / 16, count);
-	write(1, &hexTable[n % 16], 1);
+	write (1, &hextable[n % 16], 1);
 	count++;
 	return (count);
 }
 
-int ft_printxup(unsigned long n, int count)
+int	ft_printxup(unsigned long n, int count)
 {
-	char				*hexTable;
+	char				*hextable;
 
-	hexTable = "0123456789ABCDEF";
+	hextable = "0123456789ABCDEF";
 	if (n > 15)
 		count = ft_printxup(n / 16, count);
-	write(1, &hexTable[n % 16], 1);
+	write (1, &hextable[n % 16], 1);
 	count++;
 	return (count);
 }
 
-int ft_printPERC(int count)
+int	ft_printperc(int count)
 {
-	write(1, "%", 1);
+	write (1, "%", 1);
 	return (++count);
 }
 

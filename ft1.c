@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft1.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/21 16:15:58 by ppodobri          #+#    #+#             */
+/*   Updated: 2026/11/21 16:18:22 by ppodobri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int ft_printc(int c, int count)
+int	ft_printc(int c, int count)
 {
 	unsigned char	ch;
 
 	ch = (unsigned char)c;
-	write(1, &ch, 1);
+	write (1, &ch, 1);
 	return (++count);
 }
 
-int ft_prints(char *s, int count)
+int	ft_prints(char *s, int count)
 {
 	int		i;
 
@@ -21,21 +33,20 @@ int ft_prints(char *s, int count)
 	}
 	while (s[i])
 	{
-		write(1, &s[i], 1);
+		write (1, &s[i], 1);
 		i++;
 	}
 	count += i;
 	return (count);
 }
 
-int ft_printp(void *p, int count)
+int	ft_printp(void *p, int count)
 {
-	char				*hexTable;
+	char				*hextable;
 	unsigned long		n;
 
-	hexTable = "0123456789abcdef";
+	hextable = "0123456789abcdef";
 	n = (unsigned long)p;
-
 	if (p == NULL)
 	{
 		write (1, "(nil)", 5);
@@ -48,12 +59,12 @@ int ft_printp(void *p, int count)
 	}
 	if (n > 15)
 		count = ft_printxlow(n / 16, count);
-	write(1, &hexTable[n % 16], 1);
+	write (1, &hextable[n % 16], 1);
 	count++;
 	return (count);
 }
 
-int ft_printd(int n, int count)
+int	ft_printd(int n, int count)
 {
 	char	c;
 
@@ -63,7 +74,7 @@ int ft_printd(int n, int count)
 		write (1, "-", 1);
 		if (n == -2147483648)
 		{
-			write(1, "2147483648", 10);
+			write (1, "2147483648", 10);
 			count += 10;
 			return (count);
 		}
@@ -72,7 +83,7 @@ int ft_printd(int n, int count)
 	if (n > 9)
 		count = ft_printd(n / 10, count);
 	c = n % 10 + '0';
-	write(1, &c, 1);
+	write (1, &c, 1);
 	count++;
 	return (count);
 }
