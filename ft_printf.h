@@ -6,16 +6,14 @@
 /*   By: ppodobri <ppodobri@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 09:45:40 by ppodobri          #+#    #+#             */
-/*   Updated: 2026/11/21 16:22:28 by ppodobri         ###   ########.fr       */
+/*   Updated: 2026/11/21 17:00:53 by ppodobri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdlib.h>
 
 int	ft_printf(const char *input, ...);
 int	ft_printc(int c, int counter);
